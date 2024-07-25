@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A website by the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
+    <meta property="og:title" content="postgres-contrib.org | Contributions to the PostgreSQL Project">
+    <meta property="og:url" content="https://postgres-contrib.org/">
+    <meta property="og:description" content="A website by the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
+    <meta property="og:image" content="{% static 'pgcontrib.png' %}">
+    <meta property="og:image:alt" content="Logo: an elephant, turned towards an easel, painting">
+    <title>postgres-contrib.org | Contributions to the PostgreSQL Project</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="canonical" href="https://postgres-contrib.org/">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>  
+    <header>
+        <a href="https://postgres-contrib.org/"><img id="logo" src="{% static 'pgcontrib.png' %}" alt="Logo: an elephant, turned towards an easel, painting"></a>
+        <h1><a href="https://postgres-contrib.org/"><span id="title">PostgreSQL Contributions</span><span id="title2"> | postgres-contrib.org</span></a></h1>
+    </header>
+    <div class="container">
+        {% block page_title %}{% endblock %}
+        {% block page_content %}{% endblock %}
+        {% block disclaimer %}{% endblock %}
+        <footer>
+	<nav>
+           <p><span><a href="/about/"><img class="navicon" src="{% static 'favicon.ico' %}" alt="Logo: an elephant, turned towards an easel, painting">about</a></span>
+            | <span><a href="/rss/"><img class="navicon" src="{% static 'rss.webp' %}" alt="Logo: RSS">rss feed</a></span>
+            | <span><a href="https://postgresql.org/"><img class="navicon" src="{% static 'pg.org.webp' %}" alt="Logo: Slonik the PostgreSQL elephant">postgresql.org</a></span>
+            | <span><a href="https://postgresql.life/"><img class="navicon" src="{% static 'pg.life.webp' %}" alt="Logo: Slonik the PostgreSQL elephant plushie">postgresql.life</a></span></p>
+	</nav>
+        </footer>
+    </div>
+</body>
+</html>

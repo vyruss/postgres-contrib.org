@@ -1,0 +1,103 @@
+header {
+    background: #555555 url("/static/wave.svg");
+    background-blend-mode: overlay;
+    line-height: 5em;
+}
+
+#logo {
+    height: 4.5em;
+    float: left;
+    margin: 0.25em;
+}
+
+#title {
+    margin-left: 0.1em;
+    font-size: 1.25em;
+}
+
+#title2 {
+    font-size: 1.25em;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    background: url("/static/wave.svg") #dddddd; /* Page background */
+    background-blend-mode: overlay;
+    color: #dddddd;
+}
+
+a { 
+    color: white; font-weight: 500;
+}
+
+header h1 {
+    margin: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+}
+
+h1 a:hover {
+    text-decoration: underline;
+}
+h1 a {
+    text-decoration: none;
+}
+
+hr {
+    width: 62%;
+    margin: auto;
+    color: #dddddd;
+    opacity: 10%;
+}
+
+.container {
+    max-width: 50%;
+    margin: auto;
+    background-color: #2f6792; /* Content background */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+footer nav {
+    height: 5em;
+}
+
+footer span {
+    display: inline-block;
+}
+
+.navicon {
+  height: 1em;
+  vertical-align: sub;
+  margin-right: 0.25em;
+}
+
+.disclaimer {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #title2 {
+        display: none;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .disclaimer {
+        text-align: justify;
+   }
+}
+

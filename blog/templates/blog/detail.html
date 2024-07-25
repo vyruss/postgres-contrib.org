@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block page_title %}
+<article>
+    <h2>{{ post.title }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <small>
+        {{ post.author.first_name}}&nbsp;{{ post.author.last_name }} 
+        | <time style="display:none">{{ post.created_at.date|date:"c" }}</time>{{ post.created_at.date }}
+        | Category: <a href="{% url 'blog_category' post.category %}">{{ post.category.name }}</a>
+    </small>
+    {{ post.body | safe }}
+</article>
+{% endblock page_content %}

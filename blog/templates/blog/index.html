@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block page_content %}
+    {% block posts %}
+        {% for post in posts %}
+            <h3>{% if post.category.name == 'news' %}&#x1F4F0;{% else %}&#x2705;{% endif %}&nbsp;<a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
+            <small>
+                {{ post.author.first_name}}&nbsp;{{ post.author.last_name }} 
+                | <time style="display:none">{{ post.created_at.date|date:"c" }}</time>{{ post.created_at.date }}
+                | Category: <a href="{% url 'blog_category' post.category %}">{{ post.category.name }}</a>
+            </small>
+            {{ post.body | safe | truncatechars_html:500 }}
+            <hr>
+        {% endfor %}
+    {% endblock posts %}
+{% endblock page_content %}
