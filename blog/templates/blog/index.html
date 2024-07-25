@@ -5,7 +5,7 @@
         {% for post in posts %}
             <h3>{% if post.category.name == 'news' %}&#x1F4F0;{% else %}&#x2705;{% endif %}&nbsp;<a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
             <small>
-                {{ post.author.first_name}}&nbsp;{{ post.author.last_name }} 
+                <a href="{{ post.author.bloguser.www_url }}">{{ post.author.first_name}}&nbsp;{{ post.author.last_name }}</a>
                 | <time style="display:none">{{ post.created_at.date|date:"c" }}</time>{{ post.created_at.date }}
                 | Category: <a href="{% url 'blog_category' post.category %}">{{ post.category.name }}</a>
             </small>

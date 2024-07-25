@@ -23,3 +23,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
+class BlogUser(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    www_url = models.TextField()
