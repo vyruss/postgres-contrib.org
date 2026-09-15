@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block head_extra %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block page_title %}
+<article>
+<h2>Thank you</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+<p>Your submission has reached us. One of the team will read it, and if it fits the list you will see it on the <a href="/">front page</a> before long.</p>
+<p><a href="{% url 'contribute' %}">Submit another contribution</a></p>
+</article>
+{% endblock page_content %}

@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+
+{% block page_title %}
+<article>
+<h2>Submit a contribution</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+<p>Contributions to PostgreSQL reach far beyond the code: talks, meetups, translations, patch reviews, mentoring, advocacy, documentation, event organisation, and everything else that keeps the project moving. If you know of one, whether it is yours or someone else's, tell us about it and we will add it to the list.</p>
+<p>You do not need an account, and you do not have to tell us who you are. Write it however you like, in one box. Plain text is fine, and Markdown is even better, because it saves us reformatting your words.</p>
+
+<form class="contribute-form" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form.visible_fields %}
+    <p class="form-field">
+        {{ field.label_tag }}
+        {% if field.help_text %}<small class="help" id="{{ field.auto_id }}_helptext">{{ field.help_text }}</small>{% endif %}
+        {{ field.errors }}
+        {{ field }}
+    </p>
+    {% endfor %}
+    {% for field in form.hidden_fields %}{{ field }}{% endfor %}
+    <p><button type="submit">Send it in</button></p>
+</form>
+</article>
+{% endblock page_content %}

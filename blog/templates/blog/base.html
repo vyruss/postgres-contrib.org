@@ -5,44 +5,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:site_name" content="postgres-contrib.org">
-    <meta property="og:logo" content="https://postgres-contrib.org/static/pgcontrib.png" />
-    <meta property="og:image" content="https://postgres-contrib.org/static/pgcontrib.png">
-    <meta property="og:image:alt" content="Logo: an elephant, turned towards an easel, painting">
-       
-    {% block page_meta %}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="postgres-contrib.org | Contributions to the PostgreSQL Project">
-    <meta property="og:url" content="https://postgres-contrib.org/">
-    <meta property="og:author" content="postgres-contrib.org team">
-    <meta property="article:author" content="postgres-contrib.org team">
-    <meta property="og:description" content="A website by members of the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
-    <meta name="description" content="A website by members of the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
-    <link rel="canonical" href="https://postgres-contrib.org/">
-    {% endblock %}
+{% firstof meta_title "postgres-contrib.org | Contributions to the PostgreSQL Project" as meta_title %}{% firstof meta_description "A website by members of the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here." as meta_description %}{% firstof meta_path request.path as meta_path %}{% firstof meta_type "website" as meta_type %}
+{% with site_url="https://postgres-contrib.org" %}
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <link rel="canonical" href="{{ site_url }}{{ meta_path }}">
 
-    <title>postgres-contrib.org | Contributions to the PostgreSQL Project</title>
+    <meta property="og:site_name" content="postgres-contrib.org">
+    <meta property="og:type" content="{{ meta_type }}">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:url" content="{{ site_url }}{{ meta_path }}">
+    <meta property="og:logo" content="{{ site_url }}{% static 'pgcontrib.png' %}">
+    <meta property="og:image" content="{{ site_url }}{% static 'pgcontrib.png' %}">
+    <meta property="og:image:alt" content="Logo: an elephant, turned towards an easel, painting">
+    <meta name="twitter:card" content="summary">
+
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <link rel="alternate" type="application/rss+xml" title="postgres-contrib.org" href="/rss/">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    {% block head_extra %}{% endblock %}
+{% endwith %}
 </head>
-<body>  
+<body>
     <header>
-        <a href="https://postgres-contrib.org/"><img id="logo" src="{% static 'pgcontrib.png' %}" alt="Logo: an elephant, turned towards an easel, painting"></a>
+        <a id="logo-link" href="https://postgres-contrib.org/"><img id="logo" src="{% static 'pgcontrib.png' %}" alt="Logo: an elephant, turned towards an easel, painting"></a>
         <h1><a href="https://postgres-contrib.org/"><span id="title">PostgreSQL Contributions</span><span id="title2"> | postgres-contrib.org</span></a></h1>
+        <input type="checkbox" id="nav-toggle">
+        <label id="nav-toggle-label" for="nav-toggle" aria-label="Show navigation menu"><span></span><span></span><span></span></label>
+        <nav id="main-nav">
+            <a href="/about/"><img class="navicon" src="{% static 'favicon.ico' %}" alt="">about</a>
+            <a href="/contribute/"><img class="navicon" src="{% static 'favicon.ico' %}" alt="">contribute</a>
+            <a href="/rss/"><img class="navicon" src="{% static 'rss.webp' %}" alt="">rss feed</a>
+            <a href="https://postgresql.org/"><img class="navicon" src="{% static 'pg.org.webp' %}" alt="">postgresql.org</a>
+            <a href="https://postgresql.life/"><img class="navicon" src="{% static 'pg.life.webp' %}" alt="">postgresql.life</a>
+        </nav>
     </header>
     <div class="container">
         {% block page_title %}{% endblock %}
         {% block page_content %}{% endblock %}
-        {% block disclaimer %}{% endblock %}
-        <footer>
-	<nav>
-           <p><span><a href="/about/"><img class="navicon" src="{% static 'favicon.ico' %}" alt="Logo: an elephant, turned towards an easel, painting">about</a></span>
-            | <span><a href="/rss/"><img class="navicon" src="{% static 'rss.webp' %}" alt="Logo: RSS">rss feed</a></span>
-            | <span><a href="https://postgresql.org/"><img class="navicon" src="{% static 'pg.org.webp' %}" alt="Logo: Slonik the PostgreSQL elephant">postgresql.org</a></span>
-            | <span><a href="https://postgresql.life/"><img class="navicon" src="{% static 'pg.life.webp' %}" alt="Logo: Slonik the PostgreSQL elephant plushie">postgresql.life</a></span></p>
-	</nav>
-        </footer>
+        <footer>{% block disclaimer %}{% endblock %}</footer>
     </div>
 </body>
 </html>
