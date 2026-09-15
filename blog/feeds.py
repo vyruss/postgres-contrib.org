@@ -50,7 +50,7 @@ class PostFeed(Feed):
     description = "Weekly PostgreSQL contribution news"
 
     def items(self):
-       return Post.objects.order_by("-created_at")[:10]
+       return Post.objects.order_by("-created_at")[:20]
 
     def item_title(self, item):
         return item.title

@@ -5,7 +5,7 @@ from django.utils.text import Truncator
 from blog.models import Post
 import markdown
 
-POSTS_PER_PAGE = 20
+POSTS_PER_PAGE = 10
 TRUNCATE_CHARS = 500
 MD_EXTENSIONS = ["fenced_code"]
 
