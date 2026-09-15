@@ -18,8 +18,8 @@ class AuthorPostFeed(Feed):
 
     def get_object(self, request, author_name):
         fname = author_name.split('-')[0]
-        lname = author_name.split('-')[1]
-        return User.objects.filter(first_name__iexact=fname, last_name__iexact=lname)[0]
+        lname = author_name.split('-')[1:]
+        return User.objects.filter(first_name__iexact=fname, last_name__iexact=(' '.join(lname)))[0]
 
     def items(self, obj):
         return Post.objects.filter(author=obj).order_by("-created_at")[:10]

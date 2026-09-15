@@ -1,19 +1,28 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A website by the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
+    <meta property="og:site_name" content="postgres-contrib.org">
+    <meta property="og:logo" content="https://postgres-contrib.org/static/pgcontrib.png" />
+    <meta property="og:image" content="https://postgres-contrib.org/static/pgcontrib.png">
+    <meta property="og:image:alt" content="Logo: an elephant, turned towards an easel, painting">
+       
+    {% block page_meta %}
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="postgres-contrib.org | Contributions to the PostgreSQL Project">
     <meta property="og:url" content="https://postgres-contrib.org/">
-    <meta property="og:description" content="A website by the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
-    <meta property="og:image" content="{% static 'pgcontrib.png' %}">
-    <meta property="og:image:alt" content="Logo: an elephant, turned towards an easel, painting">
+    <meta property="og:author" content="postgres-contrib.org team">
+    <meta property="article:author" content="postgres-contrib.org team">
+    <meta property="og:description" content="A website by members of the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
+    <meta name="description" content="A website by members of the PostgreSQL community highlighting the contributions to the project. Many contributions to and for the PostgreSQL Project happen outside of writing code, and we list the latest ones here.">
+    <link rel="canonical" href="https://postgres-contrib.org/">
+    {% endblock %}
+
     <title>postgres-contrib.org | Contributions to the PostgreSQL Project</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="canonical" href="https://postgres-contrib.org/">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>

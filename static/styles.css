@@ -23,7 +23,7 @@ body {
     margin: 0;
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    background: url("/static/wave.svg") #dddddd; /* Page background */
+    background: url("/static/wave.svg") rgba(222,222,222); /* Page background */
     background-blend-mode: overlay;
     color: #dddddd;
 }
@@ -99,5 +99,9 @@ footer span {
     .disclaimer {
         text-align: justify;
    }
+}
+
+.read-more {
+    margin-left: 0.3em;
 }
 

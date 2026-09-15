@@ -1,5 +1,18 @@
 {% extends "blog/base.html" %}
 
+{% block page_meta %}
+    <meta property="og:type" content="article" />
+    <meta property="og:author" content="{{ post.author.first_name }} {{ post.author.last_name }}">
+    <meta property="article:author" content="{{ post.author.first_name }} {{ post.author.last_name }}">
+    <meta property="og:updated_time" content="{{ post.created_at|date:'c' }}">
+    <meta property="article:published_time" content="{{ post.created_at|date:'c' }}">
+    <meta property="og:description" content="{{ post.title }} | {{ post.body | safe | striptags | truncatechars_html:110 }}">
+    <meta name="description" content="{{ post.title }} | {{ post.body | safe | striptags | truncatechars_html:110 }}">
+    <meta property="og:url" content="https://postgres-contrib.org{{ request.path }}">
+    <meta property="og:title" content="{{ post.title }}">
+    <link rel="canonical" href="{{ request.path }}">
+{% endblock %}
+
 {% block page_title %}
 <article>
     <h2>{{ post.title }}</h2>
