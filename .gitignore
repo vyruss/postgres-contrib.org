@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+*.bak
+*.sqlite3
+/static/admin/
